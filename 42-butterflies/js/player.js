@@ -153,7 +153,7 @@ function initPlayer (startingX) {
 		return checkColl(collisionObject, other);
 	};
 
-	playerImg.src = "imgs/human-sprite6.png";
+	playerImg.src = "imgs/human-sprite100.png";
 
 	return newPlayer;
 }
