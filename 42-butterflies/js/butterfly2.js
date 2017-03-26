@@ -1,40 +1,40 @@
-function initButterfly (startingX, startingY) {
-	var newButterfly = {};
-	newButterfly.x = startingX;
-	newButterfly.y = startingY;
-	newButterfly.captured = false;
+function initButterfly2 (startingX, startingY) {
+	var newButterfly2 = {};
+	newButterfly2.x = startingX;
+	newButterfly2.y = startingY;
+	newButterfly2.captured = false;
 
-	var butterflyImg = new Image();
-	butterflyImg.onload = function () {
-		newButterfly.width = 75;
-		newButterfly.height = butterflyImg.height;
+	var butterflyImg2 = new Image();
+	butterflyImg2.onload = function () {
+		newButterfly2.width = 75;
+		newButterfly2.height = butterflyImg2.height;
 
-		newButterfly.spriteSheet = butterflyImg;
+		newButterfly2.spriteSheet = butterflyImg2;
 
-		newButterfly.flyingSprite = sprite({
-			width: newButterfly.width,
-			height: newButterfly.height,
-			image: newButterfly.spriteSheet,
+		newButterfly2.flyingSprite = sprite({
+			width: newButterfly2.width,
+			height: newButterfly2.height,
+			image: newButterfly2.spriteSheet,
 			numberOfFrames: 2,
 			startingFrameIndex: 0,
 			ticksPerFrame: (Math.random() * 10) + 8,  // random wing flap rate between 8 and 18
 			loop: true
 		});
 
-		newButterfly.render = function () {
-			newButterfly.flyingSprite.render(newButterfly.canvasX, newButterfly.canvasY);
+		newButterfly2.render = function () {
+			newButterfly2.flyingSprite.render(newButterfly2.canvasX, newButterfly2.canvasY);
 		};
 
-		newButterfly.update = function () {
-			newButterfly.flyingSprite.update();
+		newButterfly2.update = function () {
+			newButterfly2.flyingSprite.update();
 		};
 	};
 
-	newButterfly.capture = function() {
-		newButterfly.captured = true;
+	newButterfly2.capture = function() {
+		newButterfly2.captured = true;
 	};
 
-	butterflyImg.src = "imgs/bird-sprite.png";
+	butterflyImg2.src = "imgs/butterfly-sprite2.png";
 
-	return newButterfly;
+	return newButterfly2;
 }

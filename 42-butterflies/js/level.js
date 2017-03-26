@@ -20,9 +20,14 @@ function initLevel(numButterflies) {
 
 	function generateButterflies() {
 		newLevel.butterflies = [];
+		newLevel.butterflies2 = [];
 		// place butterflies randomly throughout the level
 		for (var i = 0; i < newLevel.maxScore; i++) {
 			newLevel.butterflies.push(initButterfly((Math.random() * (level.background.width - canvas.width)) + 600,
+				(Math.random() * (level.background.height/2)) + 50));
+		}
+		for (var i = 0; i < newLevel.maxScore; i++) {
+			newLevel.butterflies2.push(initButterfly2((Math.random() * (level.background.width - canvas.width)) + 600,
 				(Math.random() * (level.background.height/2)) + 50));
 		}
 	}
@@ -57,7 +62,20 @@ function initLevel(numButterflies) {
 			}
 		}
 	};
-
+	for (var index in level.butterflies2) {
+			var butterfly = level.butterflies2[index];
+			if (!butterfly2.captured) {
+				if (butterfly2.x >= -(level.background.x) - butterfly2.width && butterfly2.x <= -(level.background.x) + canvas.width) {
+					butterfly2.canvasX = butterfly2.x + level.background.x;
+					butterfly2.canvasY = butterfly2.y;
+				}
+				else {
+					butterfly2.canvasX = undefined;
+					butterfly2.canvasY = undefined;
+				}
+			}
+		}
+	};
 	newLevel.render = function () {
 		// draw the background
 		context.drawImage(backgroundImg, newLevel.background.x, newLevel.background.y);
