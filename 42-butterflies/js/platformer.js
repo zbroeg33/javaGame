@@ -109,6 +109,7 @@ function updateGame ()
 	}
 	else if(levelCleared)
 	{
+		
 		// setup a message to display
 		context.fillStyle = '#8060B6';
 		context.font = '6em "Grand Hotel"';
@@ -126,25 +127,16 @@ function updateGame ()
 				timeout = undefined;
 			}, 2000);
 		}
+		
+		
 	}
-	if(levelCount == 7)
+	
+	if(levelCount === 6)
 		{
-			context.fillStyle = '#8060B6';
-		context.font = '6em "Grand Hotel"';
-		var endMessage = 'You have collected all of the birds!';
-		context.fillText(endMessage, (canvas.width - context.measureText(endMessage).width)/2, canvas.height/2);
+			endGame();
 		}
-		if (timeout === undefined) 
-		{
-			timeout = window.setTimeout(function () {
-				levelCleared = false;
-				
-				level.reset();
-				player.reset();
-				window.clearTimeout(timeout);
-				timeout = undefined;
-			}, 5000);
-		}
+	
+	
 }
 
 // collision detection
@@ -174,7 +166,28 @@ function incrementScore(butterfly)
 	
 }
 
-
+function endGame ()
+{
+	
+			// setup a message to display
+		context.fillStyle = '#8060B6';
+		context.font = '6em "Grand Hotel"';
+		var message = 'You caught them all!';
+		context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
+		// display the message for 2 seconds before clearing it and starting a new level
+		if (timeout === undefined) 
+		{
+			timeout = window.setTimeout(function () {
+				levelCleared = false;
+				
+				
+				window.clearTimeout(timeout);
+				timeout = undefined;
+			}, 5000);
+		}
+	level.initLevel(numButterflies);
+		
+}
 
 // on frame draw
 function update () 
