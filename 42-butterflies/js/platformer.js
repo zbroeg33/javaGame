@@ -5,13 +5,16 @@ var levelCount = 1;
 
 (initialize());
 
-function initialize () {
-	document.getElementById('playButton').onclick = function () {
+function initialize () 
+{
+	document.getElementById('playButton').onclick = function () 
+	{
 		document.getElementById('music').play();
 		document.getElementById('playButton').style.display = 'none';
 		document.getElementById('pauseButton').style.display = 'block';
 	};
-	document.getElementById('pauseButton').onclick = function () {
+	document.getElementById('pauseButton').onclick = function () 
+	{
 		document.getElementById('music').pause();
 		document.getElementById('pauseButton').style.display = 'none';
 		document.getElementById('playButton').style.display = 'block';
@@ -59,26 +62,33 @@ document.body.addEventListener('keyup', function (e) {
 });
 
 // update the game canvas
-function updateGame () {
+function updateGame () 
+{
 	// check for keys pressed
-	if (keys[38] || keys[32]) {
+	if (keys[38] || keys[32]) 
+	{
 		// up arrow || space bar
-		if (!player.jumping) {
+		if (!player.jumping) 
+		{
 			player.jumping = true;
 			player.yVelocity = -player.maxSpeed * 2;
 		}
 	}
-	if (keys[39]) {
+	if (keys[39]) 
+	{
 		// right arrow
 		player.direction = 'right';
-		if (player.xVelocity < player.maxSpeed) {
+		if (player.xVelocity < player.maxSpeed)
+		{
 			player.xVelocity++;
 		}
 	}
-	if (keys[37]) {
+	if (keys[37]) 
+	{
 		// left arrow
 		player.direction = 'left';
-		if (player.xVelocity > -player.maxSpeed) {
+		if (player.xVelocity > -player.maxSpeed) 
+		{
 			player.xVelocity--;
 		}
 	}
@@ -86,7 +96,8 @@ function updateGame () {
 	// clear the canvas
 	context.clearRect(0, 0, canvas.width, canvas.height);
 
-	if (!levelCleared) {
+	if (!levelCleared) 
+	{
 		// update player and level info
 		player.update();
 		level.update();
@@ -96,14 +107,16 @@ function updateGame () {
 		level.render();
 		player.render();
 	}
-	else {
+	else if(levelCleared)
+	{
 		// setup a message to display
 		context.fillStyle = '#8060B6';
 		context.font = '6em "Grand Hotel"';
 		var message = 'Level ' + levelCount + ' cleared!';
 		context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
 		// display the message for 2 seconds before clearing it and starting a new level
-		if (timeout === undefined) {
+		if (timeout === undefined) 
+		{
 			timeout = window.setTimeout(function () {
 				levelCleared = false;
 				levelCount++;
@@ -114,39 +127,47 @@ function updateGame () {
 			}, 2000);
 		}
 	}
+	if(levelCount == 7)
+		{
+			context.fillStyle = '#8060B6';
+		context.font = '6em "Grand Hotel"';
+		var endMessage = 'You have collected all of the birds!';
+		context.fillText(endMessage, (canvas.width - context.measureText(endMessage).width)/2, canvas.height/2);
+		}
 }
 
 // collision detection
-function checkColl (obj1, obj2) {
+function checkColl (obj1, obj2)
+{
 	return (obj1.x + obj1.width >= obj2.x)
 		&& (obj1.x <= obj2.x + obj2.width)
 		&& (obj1.y <= obj2.y + obj2.height)
 		&& (obj1.y + obj1.height >= obj2.y);
 }
 
-function incrementScore(butterfly) {
-	if (!butterfly.captured) {
+function incrementScore(butterfly) 
+{
+	if (!butterfly.captured) 
+	{
 		butterfly.capture();
 		level.currentScore++;
 		scoreCard.innerHTML = score + level.currentScore;
 
-		if (level.currentScore == level.maxScore) {
+		if (level.currentScore == level.maxScore) 
+		{
 			levelCleared = true;
 			score = score + level.currentScore;
 			scoreCard.innerHTML = score;
 		}
 	} 
-	else(!butterfly2.captured) {
-		butterfly2.capture();
-		level.currentScore--;
-		scoreCard.innerHTML = score + level.currentScore;
-
-		
-	}
+	
 }
 
+
+
 // on frame draw
-function update () {
+function update () 
+{
 	updateGame();
 	// update frame
 	requestAnimationFrame(update);

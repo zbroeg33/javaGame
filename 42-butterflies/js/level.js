@@ -20,19 +20,17 @@ function initLevel(numButterflies) {
 
 	function generateButterflies() {
 		newLevel.butterflies = [];
-		newLevel.butterflies2 = [];
+		
 		// place butterflies randomly throughout the level
 		for (var i = 0; i < newLevel.maxScore; i++) {
 			newLevel.butterflies.push(initButterfly((Math.random() * (level.background.width - canvas.width)) + 600,
 				(Math.random() * (level.background.height/2)) + 50));
 		}
-		for (var i = 0; i < newLevel.maxScore; i++) {
-			newLevel.butterflies2.push(initButterfly2((Math.random() * (level.background.width - canvas.width)) + 600,
-				(Math.random() * (level.background.height/2)) + 50));
-		}
+		
 	}
 
-	newLevel.update = function () {
+	newLevel.update = function () 
+	{
 		// we need to move our background in relation to the player
 		// 0 + width/2 -> don't move the background
 		if (player.x <= (canvas.width / 2) - (player.width /2)) {
@@ -48,50 +46,48 @@ function initLevel(numButterflies) {
 		}
 
 		// update the butterflies that are on screen
-		for (var index in level.butterflies) {
+		for (var index in level.butterflies) 
+		{
 			var butterfly = level.butterflies[index];
-			if (!butterfly.captured) {
-				if (butterfly.x >= -(level.background.x) - butterfly.width && butterfly.x <= -(level.background.x) + canvas.width) {
+			if (!butterfly.captured) 
+			{
+				if (butterfly.x >= -(level.background.x) - butterfly.width && butterfly.x <= -(level.background.x) + canvas.width) 
+				{
 					butterfly.canvasX = butterfly.x + level.background.x;
 					butterfly.canvasY = butterfly.y;
 				}
-				else {
+				else 
+				{
 					butterfly.canvasX = undefined;
 					butterfly.canvasY = undefined;
 				}
 			}
 		}
+		
 	};
-	for (var index in level.butterflies2) {
-			var butterfly = level.butterflies2[index];
-			if (!butterfly2.captured) {
-				if (butterfly2.x >= -(level.background.x) - butterfly2.width && butterfly2.x <= -(level.background.x) + canvas.width) {
-					butterfly2.canvasX = butterfly2.x + level.background.x;
-					butterfly2.canvasY = butterfly2.y;
-				}
-				else {
-					butterfly2.canvasX = undefined;
-					butterfly2.canvasY = undefined;
-				}
-			}
-		}
-	};
-	newLevel.render = function () {
+	
+	
+	newLevel.render = function () 
+	{
 		// draw the background
 		context.drawImage(backgroundImg, newLevel.background.x, newLevel.background.y);
 
 		// update and render our butterflies
-		for (index in level.butterflies) {
+		for (index in level.butterflies) 
+		{
 			butterfly = level.butterflies[index];
-			if (player.collisionCheck(butterfly)) {
+			if (player.collisionCheck(butterfly)) 
+			{
 				incrementScore(butterfly);
 			}
 			// update and render our butterflies, if they have loaded.
-			if (butterfly.update && butterfly.render && !butterfly.captured) {
+			if (butterfly.update && butterfly.render && !butterfly.captured) 
+			{
 				butterfly.update();
 				butterfly.render();
 			}
 		}
+		
 	};
 
 	newLevel.reset = function(newMaxScore) {

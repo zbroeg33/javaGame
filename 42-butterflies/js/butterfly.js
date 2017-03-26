@@ -5,6 +5,7 @@ function initButterfly (startingX, startingY) {
 	newButterfly.captured = false;
 
 	var butterflyImg = new Image();
+	
 	butterflyImg.onload = function () {
 		newButterfly.width = 75;
 		newButterfly.height = butterflyImg.height;
