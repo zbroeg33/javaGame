@@ -112,7 +112,7 @@ function updateGame ()
 		
 		// setup a message to display
 		context.fillStyle = '#8060B6';
-		context.font = '6em "Grand Hotel"';
+		context.font = '6em "Gotham"';
 		var message = 'Level ' + levelCount + ' cleared!';
 		context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
 		// display the message for 2 seconds before clearing it and starting a new level
@@ -171,8 +171,8 @@ function endGame ()
 	
 			// setup a message to display
 		context.fillStyle = '#8060B6';
-		context.font = '6em "Grand Hotel"';
-		var message = 'You caught them all!';
+		context.font = '6em "Gotham"';
+		var message = 'You caught them all! Press home to try again!';
 		context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
 		// display the message for 2 seconds before clearing it and starting a new level
 		if (timeout === undefined) 
