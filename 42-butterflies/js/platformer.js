@@ -131,7 +131,7 @@ function updateGame ()
 		
 	}
 	
-	if(levelCount === 6)
+	if(levelCount === 8)
 		{
 			endGame();
 		}
@@ -172,8 +172,9 @@ function endGame ()
 			// setup a message to display
 		context.fillStyle = '#8060B6';
 		context.font = '6em "Gotham"';
-		var message = 'You caught them all! Press home to try again!';
-		context.fillText(message, (canvas.width - context.measureText(message).width)/2, canvas.height/2);
+		context.fontSize = 5;
+		var message = 'You caught them all!';
+		context.fillText(message, (canvas.width - context.measureText(message).width)/4, canvas.height/4);
 		// display the message for 2 seconds before clearing it and starting a new level
 		if (timeout === undefined) 
 		{
