@@ -134,6 +134,17 @@ function updateGame ()
 		var endMessage = 'You have collected all of the birds!';
 		context.fillText(endMessage, (canvas.width - context.measureText(endMessage).width)/2, canvas.height/2);
 		}
+		if (timeout === undefined) 
+		{
+			timeout = window.setTimeout(function () {
+				levelCleared = false;
+				
+				level.reset();
+				player.reset();
+				window.clearTimeout(timeout);
+				timeout = undefined;
+			}, 5000);
+		}
 }
 
 // collision detection
