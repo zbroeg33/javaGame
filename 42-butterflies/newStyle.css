@@ -6,9 +6,10 @@ body {
 }
 
 canvas {
-	position: relative;
+	position: absolute;
 	padding: 200;
 	margin: 50;
+	
 }
 
 h1 {
