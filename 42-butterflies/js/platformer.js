@@ -27,7 +27,7 @@ function initialize ()
 	context = canvas.getContext('2d');
 	// these can be arbitrary, but should be less than the background image dimensions
 	// height can be the same if there will be no vertical change in background
-	width = 800;
+	width = 1500;
 	height = 600;
 	canvas.width = width;
 	canvas.height = height;
